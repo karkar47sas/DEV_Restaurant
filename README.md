@@ -1,3 +1,3 @@
 # DEV_Restaurant
-Dossier ReadMe
+Dossier Read me
 Test_MFs
