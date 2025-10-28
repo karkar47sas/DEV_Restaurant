@@ -17,7 +17,7 @@ const login = () => {
     const password = passwordRef.current?.value.trim();
     try {
       console.log("Login attempt with:", { email, password });
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post('http://localhost:5000/auth/login', { 
         email,
         password,
       });
