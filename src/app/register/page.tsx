@@ -18,7 +18,7 @@ const register = () => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const numCDIRef = useRef<HTMLInputElement>(null);
-  const typeUserRef = useRef<HTMLInputElement>(null);
+  const typeUserRef = useRef<HTMLSelectElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,8 +30,8 @@ const register = () => {
     const numCDI = numCDIRef.current?.value.trim();
     const typeUser = typeUserRef.current?.value.trim();
     const password = passwordRef.current?.value.trim();
-
-    if (!username || !email || !numCDI || !typeUser || !password) {
+    // || !typeUser
+    if (!username || !email || !numCDI || !password) {
       setErrorMessage("username, email, numCDI ,typeUser ou mot de passe manquant");
       setLoading(false);
       return;
@@ -71,7 +71,8 @@ const register = () => {
             ref={usernameRef}
             // onChange={(e) => setUsername(e.target.value)}
             placeholder='Username'
-            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2" required /><br />
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required /><br />
 
           <label className="text-xl">Email:</label><br />
           <input type="email"
@@ -79,7 +80,8 @@ const register = () => {
             ref={emailRef}
             // onChange={(e) => setEmail(e.target.value)}
             placeholder='Email'
-            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2" required /><br />
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required /><br />
 
           <label className="text-xl">Numéro de la carte d'identité:</label><br />
           <input type="number"
@@ -87,14 +89,17 @@ const register = () => {
             ref={numCDIRef}
             // onChange={(e) => setNumCDI(e.target.value)}
             placeholder="Numéro de la carte d'identité"
-            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2" required /><br />
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required /><br />
 
           <label className="text-xl">Type de l'utilisateur:</label><br />
           <select name="" id=""
             // value={typeUser}
-            // ref={typeUserRef}
+            ref={typeUserRef}
             // onChange={(e) => setTypeUser(e.target.value)}
-            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2" required >
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required
+          >
             <option value="">Administrateur</option>
             <option value="">Cuisinier</option>
             <option value="">Client</option>
@@ -107,7 +112,8 @@ const register = () => {
             ref={passwordRef}
             // onChange={(e) => setPassword(e.target.value)}
             placeholder='Mot de passe'
-            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2" required /><br />
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required /><br />
 
           {successMessage && (
             <div className="text-green-600 bg-green-100 border border-green-400 p-3 rounded text-center">
