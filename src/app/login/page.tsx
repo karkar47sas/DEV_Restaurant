@@ -10,14 +10,16 @@ const login = () => {
   const [loading, setLoading] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  // const typeUserRef = useRef<HTMLInputElement>(null);
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => { 
     e.preventDefault();
     setLoading(true);
     const email = emailRef.current?.value.trim();
     const password = passwordRef.current?.value.trim();
+    // const typeUser = typeUserRef.current?.value.trim();
     try {
       console.log("Login attempt with:", { email, password });
-      const response = await axios.post('http://localhost:5000/auth/login', { 
+      const response = await axios.post('http://localhost:5000/auth/login', {
         email,
         password,
       });
@@ -46,6 +48,18 @@ const login = () => {
       localStorage.setItem("isLoggedIn", "true");
       window.dispatchEvent(new Event("authChange"));
       setErrorMessage(null);
+      // switch (typeUser) {
+      //   case "Administrateur":
+      //     router.push("/admin");
+      //     break;
+      //   case "Cuisinier":
+      //     router.push("/cuisinier");
+      //     break;
+      //   case "Client":
+      //     router.push("/client");
+      //     break;
+      //   default: break;
+      // }
       router.push("/");
     } catch (error) {
       setLoading(false);

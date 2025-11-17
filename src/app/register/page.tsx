@@ -18,7 +18,10 @@ const register = () => {
   const usernameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const numCDIRef = useRef<HTMLInputElement>(null);
+  // const typeUserRef = useRef<HTMLInputElement>(null);
   const typeUserRef = useRef<HTMLSelectElement>(null);
+  // const typeUserRef = useRef<HTMLSelectElement>(null);
+  // const typeUserRef = useRef<HTMLOptionElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +31,7 @@ const register = () => {
     const username = usernameRef.current?.value.trim();
     const email = emailRef.current?.value.trim();
     const numCDI = numCDIRef.current?.value.trim();
+    // const typeUser = typeUserRef.current?.value.trim();
     const typeUser = typeUserRef.current?.value.trim();
     const password = passwordRef.current?.value.trim();
     // || !typeUser
@@ -92,19 +96,39 @@ const register = () => {
             className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
             required /><br />
 
-          <label className="text-xl">Type de l'utilisateur:</label><br />
-          <select name="" id=""
+          {/* <label className="text-xl">Type de l'utilisateur:</label><br /> */}
+          {/* <select name="" id=""
             // value={typeUser}
             ref={typeUserRef}
             // onChange={(e) => setTypeUser(e.target.value)}
             className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
             required
           >
-            <option value="">Administrateur</option>
-            <option value="">Cuisinier</option>
-            <option value="">Client</option>
+            <option value="" >Administrateur</option>
+            <option value="" >Cuisinier</option>
+            <option value="" >Client</option>
+          </select> */}
+          {/* <input type="text"
+            ref={typeUserRef}
+            placeholder="Type de l'utilisateur"
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required />
+          <br /> */}
+
+          <label className="text-xl">Type de l'utilisateur:</label><br />
+
+          <select
+            ref={typeUserRef}
+            className="mb-2 mt-2 w-50 border px-3 py-2 rounded focus:ring-2"
+            required
+          >
+            {/* <option value="">Sélectionner le type de l'utilisateur</option> */}
+            <option value="Administrateur">Administrateur</option>
+            <option value="Cuisinier">Cuisinier</option>
+            <option value="Client">Client</option>
           </select>
           <br />
+
 
           <label className="text-xl">Mot de passe:</label><br />
           <input type="password"
